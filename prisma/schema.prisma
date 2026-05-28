@@ -1,0 +1,115 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model riskdepart {
+  depid    Int     @id @default(autoincrement())
+  depname  String? @db.VarChar(200)
+  depuser  String? @db.VarChar(200)
+  deppass  String? @db.VarChar(50)
+  deplevel String? @db.VarChar(1)
+
+  @@map("riskdepart")
+}
+
+model riskgroup {
+  grid        Int           @id @default(autoincrement())
+  grname      String?
+  dtgrid      Int?
+
+
+  riskgroupdt riskgroupdt[] 
+}
+
+model riskgroupdt {
+  dtgrid    Int          @id @default(autoincrement())
+  dtgrname  String?
+  drid      Int?         // นี่คือฟิลด์ที่เก็บ ID ของหมวดหลัก (Foreign Key)
+
+  // 🔗 ระบุความสัมพันธ์: เชื่อมฟิลด์ drid ไปหา grid ของ riskgroup
+  riskgroup riskgroup?   @relation(fields: [drid], references: [grid]) // <--- เพิ่มบรรทัดนี้ครับ
+}
+
+model riskgrouplv {
+  grlvid    Int     @id @default(autoincrement())
+  grlvcode  String? @db.VarChar(10)
+  grlvname  String?
+  grlvlevel String? @db.VarChar(10)
+}
+
+model riskmain {
+  riskid             Int       @id
+  riskname           String?
+  riskhn             String?
+  riskage            String?
+  daterigter  DateTime? @db.Date
+  timepicker  String?
+  depreport          String?
+  todep              String?
+  risktype           String?
+  risktypedt         String?
+  risktypedrug       String?
+  risktypedrugdt     String?
+  risktypedrugresult String?
+  clinicseverity     String?
+  genseverity        String?
+  riskpresent        String?
+  riskfirstedit      String?
+  riskresultedit     String?
+  riskcommenthead    String?
+  riskheadreply      String?
+  risknote           String?
+  riskcauseanalysis  String?
+  riskstatus         String?
+  riskdaterep        DateTime? @db.Date
+  riskdaterespon     String?
+  riskshow           String?
+  is_read            Boolean   @default(false)
+  updatedAt          DateTime? @updatedAt
+
+  @@map("riskmain")
+}
+
+model riskstatus {
+  stid    Int     @id @default(autoincrement())
+  stname  String? @db.VarChar(200)
+  stlevel String? @db.VarChar(1)
+}
+
+model Risktype {
+  code       String  @id
+  nameTh     String
+  isNearMiss Boolean
+  sortorder  Int
+}
+
+model Severitylevel {
+  level       String @id
+  label       String
+  color       String
+  description String
+}
+
+model Systemconfig {
+  key   String @id
+  value String
+
+  @@map("systemconfig")
+}
+
+model auditlog {
+  id        Int      @id @default(autoincrement())
+  userId    String?
+  userName  String?
+  action    String
+  target    String?
+  detail    String?
+  ipAddress String?
+  createdAt DateTime @default(now())
+
+  @@map("auditlog")
+}

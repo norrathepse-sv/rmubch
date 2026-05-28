@@ -5,16 +5,17 @@
   --foreground: #171717;
 }
 
+/* ตั้งค่า Font Family หลักจาก Variable ที่ส่งมาจาก layout.tsx */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-anuphan), ui-sans-serif, system-ui;
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #020617; /* ปรับให้เข้ากับธีมเข้มของ RMUBCH */
     --foreground: #ededed;
   }
 }
@@ -22,5 +23,82 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* บังคับใช้ Anuphan เป็นลำดับแรก */
+  font-family: var(--font-anuphan), sans-serif;
+  font-feature-settings: "thin" 0; /* ช่วยให้ฟอนต์ไทยแสดงผลสระไม่ลอย */
+}
+
+/* --- สไตล์สำหรับหน้าจอปกติ (Screen) --- */
+@media screen {
+  .print-only-container {
+    display: none !important;
+  }
+}
+
+/* --- สไตล์สำหรับตอนพิมพ์เท่านั้น (Print) --- */
+@media print {
+  .no-print, 
+  header,
+  nav, 
+  aside, 
+  button {
+    display: none !important;
+  }
+
+  .print-only-container {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white !important;
+    /* พิมพ์รายงานต้องใช้ฟอนต์ที่ชัดเจน */
+    font-family: var(--font-anuphan), sans-serif !important;
+    font-size: 12pt !important;
+    color: black !important;
+  }
+
+  /* จัดการ HTML ที่มาจาก Rich Text Editor ให้เป็น Anuphan ด้วย */
+  .rich-text-content,
+  .rich-text-content *,
+  .rich-text-content p,
+  .rich-text-content span,
+  .rich-text-content div {
+    font-family: var(--font-anuphan), sans-serif !important;
+    font-size: 11pt !important; 
+    line-height: 1.6 !important;
+    color: black !important;
+    background-color: transparent !important;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+  }
+
+  table td, 
+  table th {
+    border: 1px solid #333 !important; /* เส้นตารางไม่ต้องดำสนิทเพื่อให้ดูซอฟต์ */
+    padding: 6px 8px !important;
+    font-size: 10.5pt !important;
+    font-family: var(--font-anuphan), sans-serif !important;
+    vertical-align: top;
+  }
+
+  @page {
+    size: A4;
+    margin: 1.5cm;
+  }
+
+  body {
+    background: white !important;
+    margin: 0;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .landscape-only-overlay {
+    display: flex !important;
+  }
 }
