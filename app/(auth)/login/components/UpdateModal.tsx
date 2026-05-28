@@ -16,7 +16,7 @@ export default function UpdateModal({ isOpen, onClose }: { isOpen: boolean, onCl
         <div className="flex justify-between items-start mb-8">
           <div>
             <h2 className="text-xl font-bold text-slate-900">What's New</h2>
-            <p className="text-slate-400 text-xs mt-1">Version 1.2</p>
+            <p className="text-slate-400 text-xs mt-1">Version 1.3</p>
           </div>
           <button onClick={onClose} className="text-slate-300 hover:text-slate-900 transition-colors">
             <X size={20} />
@@ -26,44 +26,41 @@ export default function UpdateModal({ isOpen, onClose }: { isOpen: boolean, onCl
         <div className="space-y-6 text-left">
           {/* รายการอัปเดตแบบเรียบๆ ไม่มีไอคอนสี */}
           <div className="space-y-1">
-            <h4 className="text-sm font-bold text-slate-800">ระบบแจ้งเตือนใหม่</h4>
-            <p className="text-slate-500 text-xs leading-relaxed ml-4">ตรวจสอบงานใหม่ทุก 1 นาทีอัตโนมัติ</p>
+            <h4 className="text-sm font-bold text-slate-800">ระบบจัดการข้อมูล</h4>
+            <p className="text-slate-500 text-xs leading-relaxed ml-4">เพิ่มฟังชั่นตอบกลับของหัวหน้าหน่วยงาน</p>
           </div>
 
           <div className="space-y-1">
-            <h4 className="text-sm font-bold text-slate-800">ระบบจัดการข้อมูล</h4>
+            <h4 className="text-sm font-bold text-slate-800">ระบบส่งออกข้อมูล</h4>
             <div className="ml-4">
-            <p className="text-slate-500 text-xs leading-relaxed">เพิ่มฟังชั่นแก้ไขข้อมูล</p>
-            <p className="text-slate-500 text-xs leading-relaxed">เพิ่มฟังชั่นลบข้อมูล</p>
-            <p className="text-slate-500 text-xs leading-relaxed">เพิ่ม AI ช่วยในการวิเคราะห์ความรุนแรง</p>
-            <p className="text-slate-500 text-xs leading-relaxed">เพิ่มระบบล็อคและปลดล็อค ความเห็นของหัวหน้า/ข้อสั่งการ</p>         
-            <p className="text-slate-500 text-xs leading-relaxed">เพิ่มจัดเรียงระดับความรุนแรงตามลำดับ</p>         
-            <p className="text-slate-500 text-xs leading-relaxed">เพิ่มสีสําหรับระดับความรุนแรง</p>
+            <p className="text-slate-500 text-xs leading-relaxed"> เพิ่มการ export excel ใน Dashboard</p>
             </div>         
           </div>
 
          
 
           <div className="space-y-1">
-            <h4 className="text-sm font-bold text-slate-800">การจัดเรียงข้อมูล</h4>
+            <h4 className="text-sm font-bold text-slate-800">ตารางความเสี่ยง</h4>
             <div className="ml-4">
-            <p className="text-slate-500 text-xs leading-relaxed">รายการที่ยังไม่ได้อ่านจะแสดงอยู่ด้านบนสุด</p>
+            <p className="text-slate-500 text-xs leading-relaxed">เพิ่มสถานะตอบกลับเครื่องหมายถูกสีส้ม</p>
             </div>
           </div>
 
           <div className="space-y-1">
-            <h4 className="text-sm font-bold text-slate-800">รายงาน</h4>
+            <h4 className="text-sm font-bold text-slate-800">ระบบส่งออกข้อมูล</h4>
             <div className="ml-4">
-            <p className="text-slate-500 text-xs leading-relaxed">ปรับปรุงหน้าพิมพ์รายงานเพิ่มรหัสความรุนแรงในรายงาน</p>
+            <p className="text-slate-500 text-xs leading-relaxed">เพิ่มการ export excel ใน Dashboard</p>
             </div>
           </div>
 
           <div className="space-y-1">
-            <h4 className="text-sm font-bold text-slate-800">หน่วยงาน</h4>
-             <div className="ml-4">
-            <p className="text-slate-500 text-xs leading-relaxed">ปรับปรุงชื่อหอผู้ป่วยให้เป็นปัจจุบัน เปลี่ยนจากคำนำหน้าจาก "Ward" เป็น "หอผู้ป่วย"</p>
+            <h4 className="text-sm font-bold text-slate-800">Login</h4>
+            <div className="ml-4">
+            <p className="text-slate-500 text-xs leading-relaxed">Loginpage เป็น UX/UI</p>
             </div>
           </div>
+
+
         </div>
 
         <button 
